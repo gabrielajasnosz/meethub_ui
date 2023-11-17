@@ -1,20 +1,32 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { StartPage } from "./pages/StartPage/StartPage";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { StartPageLayout } from "./components/StartPageLayout/StartPageLayout";
+import { SignInPage } from "./pages/SignInPage/SignInPage";
+import { SignUpForm } from "./pages/SignUpForm/SignUpForm";
+import { HomePage } from "./pages/HomePage/HomePage";
+import RouteGuard from "./components/RouteGuard/RouteGuard";
+
+const router = createBrowserRouter([
+  {
+    path: "/sign-in",
+    element: <StartPageLayout children={<SignInPage />} />,
+  },
+  {
+    path: "/sign-up",
+    element: <StartPageLayout children={<SignUpForm />} />,
+  },
+  {
+    path: "/",
+    element: <RouteGuard children={<HomePage />} />,
+  },
+]);
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<StartPage />}>
-          {/*<Route index element={<Home />} />*/}
-          {/*<Route path="blogs" element={<Blogs />} />*/}
-          {/*<Route path="contact" element={<Contact />} />*/}
-          {/*<Route path="*" element={<NoPage />} />*/}
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div className="app">
+      <RouterProvider router={router} />
+    </div>
   );
 }
 

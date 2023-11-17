@@ -1,0 +1,13 @@
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: start;
+  min-width: 350px;
+
+  .logo {
+    height: 80px;
+    margin-bottom: 20px;
+    align-self: center;
+  }
+}
