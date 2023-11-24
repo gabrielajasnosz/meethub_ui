@@ -1,5 +1,6 @@
 import React from "react";
+import { Navbar } from "../../components/Navbar/Navbar";
 
 export const HomePage = () => {
-  return <div>hura jestem zalogowany</div>;
+  return <Navbar />;
 };
