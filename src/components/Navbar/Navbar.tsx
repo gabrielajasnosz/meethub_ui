@@ -1,4 +1,4 @@
-import { AppBar, Box, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
+import { AppBar, Box, Button, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
 import React, { useState } from "react";
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
@@ -15,7 +15,15 @@ export const Navbar = () => {
       <AppBar position="static" color="transparent" sx={{ boxShadow: "0px 2px 5px #1976d2" }}>
         <Toolbar>
           <img className={"logo"} src="meethub_logo.png" alt="logo" />
-          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ flexGrow: 6 }} />
+          <Box sx={{ flexGrow: 1, display: "flex", justifyContent: "space-evenly" }}>
+            <Button variant="outlined" style={{ width: "45%" }}>
+              Meetings
+            </Button>
+            <Button variant="outlined" style={{ width: "45%" }}>
+              Friends
+            </Button>
+          </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton
               size="large"
