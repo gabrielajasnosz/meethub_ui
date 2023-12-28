@@ -21,14 +21,12 @@ export const signIn = (formData: SignInFormType) =>
       "Content-Type": "application/json",
     },
     body: JSON.stringify(formData),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      const token = data.token;
-      localStorage.setItem("token", token);
-      window.location.href = "/";
-    })
-    .catch((error) => console.error(error));
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error("Something went wrong");
+  });
 
 export const signUp = (formData: SignUpFormType) =>
   fetch(SERVICE_URL + PREFIX + "/register", {
@@ -37,4 +35,10 @@ export const signUp = (formData: SignUpFormType) =>
       "Content-Type": "application/json",
     },
     body: JSON.stringify(formData),
-  }).then((response) => response.json());
+  }).then((response) => {
+    if (response.ok) {
+      return {};
+    } else {
+      throw new Error("Something went wrong");
+    }
+  });
