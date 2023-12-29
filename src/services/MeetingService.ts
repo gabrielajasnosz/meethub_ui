@@ -47,5 +47,9 @@ export const createMeeting = (meeting: CreateMeetingRequest) => {
       Authorization: JWT_PREFIX + localStorage.getItem("token"),
     },
     body: JSON.stringify(formattedMeeting),
-  }).then((response) => response.json());
+  }).then((response) => {
+    if(response.ok){
+      return {}
+    }
+  });
 };

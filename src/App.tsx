@@ -7,6 +7,7 @@ import { SignUpForm } from "./pages/SignUpForm/SignUpForm";
 import { HomePage } from "./pages/HomePage/HomePage";
 import RouteGuard from "./components/RouteGuard/RouteGuard";
 import { FriendsList } from "./pages/FriendsList/FriendsList";
+import { MeetingDetails } from "./pages/MeetingsDetails/MeetingDetails";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/friends",
     element: <RouteGuard children={<FriendsList />} />,
+  },
+  {
+    path: "/meeting/:meetingId",
+    element: <RouteGuard children={<MeetingDetails />} />,
   },
 ]);
 

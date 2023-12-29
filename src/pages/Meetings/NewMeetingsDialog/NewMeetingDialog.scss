@@ -1,0 +1,13 @@
+.new-meeting-dialog {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  gap: 20px;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 20px;
+  }
+}

@@ -1,8 +1,8 @@
 import React from "react";
 import { Footer } from "../../components/Footer/Footer";
-import { MeetingComponent } from "../../components/MeetingsComponent/MeetingComponent";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { useStorage } from "../../hooks/useStorage";
+import { Meetings } from "../Meetings/Meetings";
 
 export const HomePage = () => {
   const { isLoggedIn } = useStorage();
@@ -11,7 +11,7 @@ export const HomePage = () => {
       <Navbar />
       {isLoggedIn && (
         <>
-          <MeetingComponent />
+          <Meetings />
         </>
       )}
       <Footer />

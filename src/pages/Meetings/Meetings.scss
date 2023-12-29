@@ -1,0 +1,17 @@
+.meetings {
+  display: flex;
+  height: 100%;
+  margin: 140px;
+  flex-direction: column;
+  gap: 78px;
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.label {
+  font-size: 40px;
+}

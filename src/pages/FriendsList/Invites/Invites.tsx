@@ -48,7 +48,7 @@ export const Invites = ({ invitations }: InvitesProps) => {
             <TableRow>
               {["First name", "Last name", "Email", "Accept/Delete"].map(
                 (header: string) => (
-                  <StyledTableCell align="center">{header}</StyledTableCell>
+                  <StyledTableCell align="center" width={'25%'}>{header}</StyledTableCell>
                 ),
               )}
             </TableRow>
@@ -56,16 +56,16 @@ export const Invites = ({ invitations }: InvitesProps) => {
           <TableBody>
             {invitations.map((row) => (
               <StyledTableRow key={row.id}>
-                <StyledTableCell align="center">
+                <StyledTableCell align="center" width={'25%'}>
                   {row.inviterUser.firstName}
                 </StyledTableCell>
-                <StyledTableCell align="center">
+                <StyledTableCell align="center" width={'25%'}>
                   {row.inviterUser.lastName}
                 </StyledTableCell>
-                <StyledTableCell align="center">
+                <StyledTableCell align="center" width={'25%'}>
                   {row.inviterUser.email}
                 </StyledTableCell>
-                <StyledTableCell align="center">
+                <StyledTableCell align="center" width={'25%'}>
                   <div
                     style={{
                       display: "flex",

@@ -45,7 +45,7 @@ export const YourFriends = ({ friendsList }: YourFriendsProps) => {
             <TableRow>
               {["First name", "Last name", "Email", "Delete"].map(
                 (header: string) => (
-                  <StyledTableCell align="center">{header}</StyledTableCell>
+                  <StyledTableCell align="center" width={'25%'}>{header}</StyledTableCell>
                 ),
               )}
             </TableRow>
@@ -53,12 +53,12 @@ export const YourFriends = ({ friendsList }: YourFriendsProps) => {
           <TableBody>
             {friendsList.map((row) => (
               <StyledTableRow key={row.id}>
-                <StyledTableCell align="center">
+                <StyledTableCell align="center" width={'25%'}>
                   {row.firstName}
                 </StyledTableCell>
-                <StyledTableCell align="center">{row.lastName}</StyledTableCell>
-                <StyledTableCell align="center">{row.email}</StyledTableCell>
-                <StyledTableCell align="center">
+                <StyledTableCell align="center" width={'25%'}>{row.lastName}</StyledTableCell>
+                <StyledTableCell align="center" width={'25%'}>{row.email}</StyledTableCell>
+                <StyledTableCell align="center" width={'25%'}>
                   <IconButton aria-label="delete">
                     <DeleteIcon sx={{ color: "#1976D2" }} />
                   </IconButton>

@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Grid,
   Card,
   CardContent,
   Typography,
@@ -8,8 +7,9 @@ import {
   Button,
 } from "@mui/material";
 import { format, parseISO } from "date-fns";
-import pl from "date-fns/locale/pl";
-import { MeetingEntry } from "../../services/MeetingService";
+import enGB from "date-fns/locale/en-GB";
+import { MeetingEntry } from "../../../services/MeetingService";
+import "./MeetingList.scss"
 
 interface MeetingListProps {
   meetings: MeetingEntry[];
@@ -26,10 +26,9 @@ export const MeetingList = (meetingListProp: MeetingListProps) => {
     .slice(0, 4);
 
   return (
-    <>
+    <div className={'meeting-list'}>
       {filteredMeetings.map((element: MeetingEntry) => {
         return (
-          <Grid key={element.id} item xs={3}>
             <Card sx={{ minWidth: 275, boxShadow: "0 3px 6px #00000029" }}>
               <CardContent>
                 <Typography
@@ -47,7 +46,7 @@ export const MeetingList = (meetingListProp: MeetingListProps) => {
                   align="center"
                 >
                   {format(parseISO(element.date!), "MMMM", {
-                    locale: pl,
+                    locale: enGB,
                   })}
                 </Typography>
                 <Typography
@@ -69,16 +68,16 @@ export const MeetingList = (meetingListProp: MeetingListProps) => {
                 <Button
                   size="medium"
                   variant="outlined"
+                  href={`/meeting/${element.id}`}
                   sx={{ textTransform: "none", width: "65%" }}
                   style={{ borderWidth: "2px", fontSize: "14px" }}
                 >
-                  Zobacz więcej
+                  See more
                 </Button>
               </CardActions>
             </Card>
-          </Grid>
         );
       })}
-    </>
+    </div>
   );
 };
