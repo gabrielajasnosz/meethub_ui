@@ -13,8 +13,7 @@ import {
 } from "../../../services/MeetingService";
 import CloseIcon from "@mui/icons-material/Close";
 import { Toast, ToastValues } from "../../../components/Toast/Toast";
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { LocalizationProvider } from "@mui/x-date-pickers";
+import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import moment from "moment";
 import "./NewMeetingDialog.scss"
@@ -39,7 +38,7 @@ export const NewMeetingDialog: React.FC<NewMeetingDialogProps> = ({
   };
 
   const onDateChange = (value: { $d: any; } | null, context: any) => {
-    setFormData((prevData) => ({ ...prevData, date : moment(value?.$d).format('yyyy-MM-DD') }));
+    setFormData((prevData) => ({ ...prevData, date : moment(value?.$d).format() }));
   };
 
   const handleSave = () => {
@@ -99,7 +98,7 @@ export const NewMeetingDialog: React.FC<NewMeetingDialogProps> = ({
             InputLabelProps={{ shrink: true }}
           />
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
+            <DateTimePicker
               disablePast
               label="Date"
               name="date"

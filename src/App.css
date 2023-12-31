@@ -39,5 +39,8 @@
 }
 
 .logo {
-  height: 50px;
+  height:50px;
+  width: 130px;
+  background-image: url("/public/meethub_logo.png");
+  background-size: contain;
 }

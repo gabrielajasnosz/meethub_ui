@@ -2,13 +2,13 @@ import {
   AppBar,
   Box,
   Button,
-  IconButton,
   Menu,
   MenuItem,
   Toolbar,
 } from "@mui/material";
 import React, { useState } from "react";
-import AccountCircle from "@mui/icons-material/AccountCircle";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import "./Navbar.scss";
 
 export const Navbar = () => {
   const [menuOpened, setMenuOpened] = useState<boolean>(false);
@@ -26,8 +26,8 @@ export const Navbar = () => {
         sx={{ boxShadow: "0px 2px 5px #1976d2" }}
       >
         <Toolbar>
-          <img className={"logo"} src="meethub_logo.png" alt="logo" />
-          <Box sx={{ flexGrow: 6 }} />
+            <div className={'logo'} />
+          <Box sx={{ flexGrow: 8 }} />
           <Box
             sx={{
               flexGrow: 1,
@@ -35,31 +35,29 @@ export const Navbar = () => {
               justifyContent: "space-evenly",
             }}
           >
-            <Button variant="outlined" style={{ width: "45%" }} href={"/"}>
+            <Button variant="outlined" href={"/"} sx={{ width: '200px'}}>
               Meetings
             </Button>
             <Button
+              sx={{ width: '200px'}}
               variant="outlined"
-              style={{ width: "45%" }}
               href={"/friends"}
             >
               Friends
             </Button>
-          </Box>
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-haspopup="true"
+            <Button
+              variant="outlined"
+              sx={{ width: '200px'}}
               onClick={(e) => {
                 setAnchorEl(e.currentTarget);
                 setMenuOpened(true);
               }}
-              color="inherit"
             >
-              <AccountCircle />
-            </IconButton>
+              <div className={'button-with-icon'}>
+                Account
+                <KeyboardArrowDownIcon sx={{ marginLeft: '10px'}} />
+              </div>
+            </Button>
           </Box>
           <Menu
             anchorEl={anchorEl}

@@ -1,14 +1,20 @@
 .meetings {
   display: flex;
-  height: 100%;
-  margin: 140px;
+  margin-top: 78px;
   flex-direction: column;
   gap: 78px;
+  margin-bottom: 100px;
 
   &__row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 50px;
+  }
+
+  &__section {
+    background: linear-gradient(rgba(249, 249, 249, 0.3), rgba(249, 249, 249, 0.3)), url("../../../public/section-background.svg");
+    padding: 30px 140px;
   }
 }
 

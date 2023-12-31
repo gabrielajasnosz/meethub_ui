@@ -53,3 +53,13 @@ export const createMeeting = (meeting: CreateMeetingRequest) => {
     }
   });
 };
+
+export const getMeetingDetails = (meetingId: string) => fetch(SERVICE_URL + PREFIX + `/${meetingId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: JWT_PREFIX + localStorage.getItem("token"),
+    },
+  })
+    .then((response) => response.json())
+    .catch((error) => console.error(error));

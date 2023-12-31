@@ -10,9 +10,7 @@ export const HomePage = () => {
     <>
       <Navbar />
       {isLoggedIn && (
-        <>
           <Meetings />
-        </>
       )}
       <Footer />
     </>

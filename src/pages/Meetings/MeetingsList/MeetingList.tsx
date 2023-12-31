@@ -29,7 +29,7 @@ export const MeetingList = (meetingListProp: MeetingListProps) => {
     <div className={'meeting-list'}>
       {filteredMeetings.map((element: MeetingEntry) => {
         return (
-            <Card sx={{ minWidth: 275, boxShadow: "0 3px 6px #00000029" }}>
+            <Card sx={{ minWidth: 275, boxShadow: "0 3px 6px #00000029", padding: '10px' }}>
               <CardContent>
                 <Typography
                   sx={{ fontSize: 20, fontWeight: "bold", color: "#1976D2" }}

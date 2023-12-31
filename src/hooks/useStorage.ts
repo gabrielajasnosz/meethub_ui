@@ -1,6 +1,9 @@
+import { jwtDecode } from "jwt-decode";
+
 type StorageType = {
   isLoggedIn: boolean;
   signIn: (data: { token: any }) => void;
+  getUserName: () => string | null
 };
 
 export const useStorage = (): StorageType => {
@@ -12,5 +15,11 @@ export const useStorage = (): StorageType => {
     window.location.href = "/";
   };
 
-  return { isLoggedIn: hasJWT(), signIn };
+  const getUserName = () => {
+    const token = localStorage.getItem("token");
+    //@ts-ignore
+    return !!localStorage.getItem("token") ? jwtDecode(token!).firstName : null;
+  }
+
+  return { isLoggedIn: hasJWT(), signIn, getUserName };
 };
