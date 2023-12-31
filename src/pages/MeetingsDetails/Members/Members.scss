@@ -1,0 +1,11 @@
+.members {
+  width: 400px;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
