@@ -48,13 +48,14 @@ export const createMeeting = (meeting: CreateMeetingRequest) => {
     },
     body: JSON.stringify(formattedMeeting),
   }).then((response) => {
-    if(response.ok){
-      return {}
+    if (response.ok) {
+      return {};
     }
   });
 };
 
-export const getMeetingDetails = (meetingId: string) => fetch(SERVICE_URL + PREFIX + `/${meetingId}`, {
+export const getMeetingDetails = (meetingId: string) =>
+  fetch(SERVICE_URL + PREFIX + `/${meetingId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

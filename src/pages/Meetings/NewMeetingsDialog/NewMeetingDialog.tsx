@@ -16,16 +16,18 @@ import { Toast, ToastValues } from "../../../components/Toast/Toast";
 import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import moment from "moment";
-import "./NewMeetingDialog.scss"
+import "./NewMeetingDialog.scss";
 
 interface NewMeetingDialogProps {
   open: boolean;
   onClose: () => void;
+  onSubmit: (arg: boolean) => void;
 }
 
 export const NewMeetingDialog: React.FC<NewMeetingDialogProps> = ({
   open,
   onClose,
+  onSubmit,
 }) => {
   const [toast, setToast] = useState<ToastValues>({
     toastOpened: false,
@@ -37,19 +39,24 @@ export const NewMeetingDialog: React.FC<NewMeetingDialogProps> = ({
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const onDateChange = (value: { $d: any; } | null, context: any) => {
-    setFormData((prevData) => ({ ...prevData, date : moment(value?.$d).format() }));
+  const onDateChange = (value: { $d: any } | null, context: any) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      date: moment(value?.$d).format(),
+    }));
   };
 
   const handleSave = () => {
     const meetingData: CreateMeetingRequest = { ...formData };
-    createMeeting(meetingData).then(() => {
-      setToast({
-        toastOpened: true,
-        severity: "success",
-        message: "Meeting successfuly created.",
-      });
-    })
+    createMeeting(meetingData)
+      .then(() => {
+        setToast({
+          toastOpened: true,
+          severity: "success",
+          message: "Meeting successfuly created.",
+        });
+        onSubmit(true);
+      })
       .catch(() => {
         setToast({
           toastOpened: true,
@@ -78,20 +85,17 @@ export const NewMeetingDialog: React.FC<NewMeetingDialogProps> = ({
       >
         <CloseIcon />
       </IconButton>
-      <DialogContent className={'new-meeting-dialog'}>
-            <Typography
-              variant="h4"
-              sx={{ fontWeight: "bold", color: "#4A6072" }}
-            >
-              Add meeting
-            </Typography>
-        <div className={'new-meeting-dialog__row'}>
+      <DialogContent className={"new-meeting-dialog"}>
+        <Typography variant="h4" sx={{ fontWeight: "bold", color: "#4A6072" }}>
+          Add meeting
+        </Typography>
+        <div className={"new-meeting-dialog__row"}>
           <TextField
-            sx={{ width: "250px"}}
+            sx={{ width: "250px" }}
             required
             label="Name"
             name="title"
-            helperText={'Name of your event'}
+            helperText={"Name of your event"}
             margin="normal"
             value={formData.title}
             onChange={handleChange}
@@ -104,26 +108,26 @@ export const NewMeetingDialog: React.FC<NewMeetingDialogProps> = ({
               name="date"
               slotProps={{
                 textField: {
-                  helperText: 'Meeting\'s date',
+                  helperText: "Meeting's date",
                 },
               }}
               onChange={onDateChange}
-              sx={{ width: '250px'}}
+              sx={{ width: "250px" }}
             />
           </LocalizationProvider>
         </div>
-              <TextField
-                required
-                label="Adres"
-                name="address"
-                fullWidth
-                margin="normal"
-                helperText={'Meeting\'s address'}
-                value={formData.address}
-                onChange={handleChange}
-                InputLabelProps={{ shrink: true }}
-              />
-        <div className={'new-meeting-dialog__row'}>
+        <TextField
+          required
+          label="Adres"
+          name="address"
+          fullWidth
+          margin="normal"
+          helperText={"Meeting's address"}
+          value={formData.address}
+          onChange={handleChange}
+          InputLabelProps={{ shrink: true }}
+        />
+        <div className={"new-meeting-dialog__row"}>
           <Button onClick={clearAndCloseDialog} color="primary" fullWidth>
             Close
           </Button>

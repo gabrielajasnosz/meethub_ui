@@ -29,7 +29,7 @@ export const SignInForm = () => {
   };
   return (
     <form className={"sign-in-view"}>
-      <img className={"logo"} src="meethub_logo.png" alt="logo" />
+      <img className={"logo-view"} src="meethub_logo.png" alt="logo" />
       <TextField
         label="E-mail"
         variant="outlined"

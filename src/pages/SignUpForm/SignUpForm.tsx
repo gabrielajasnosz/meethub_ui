@@ -41,7 +41,7 @@ export const SignUpForm = () => {
       >
         Go back
       </Button>
-      <img className={"logo"} src="meethub_logo.png" alt="logo" />
+      <img className={"logo-view"} src="meethub_logo.png" alt="logo" />
       <TextField
         label="First name"
         variant="outlined"

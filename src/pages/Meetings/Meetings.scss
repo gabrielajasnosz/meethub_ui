@@ -13,7 +13,11 @@
   }
 
   &__section {
-    background: linear-gradient(rgba(249, 249, 249, 0.3), rgba(249, 249, 249, 0.3)), url("../../../public/section-background.svg");
+    background: linear-gradient(
+        rgba(249, 249, 249, 0.3),
+        rgba(249, 249, 249, 0.3)
+      ),
+      url("../../../public/section-background.svg");
     padding: 30px 140px;
   }
 }

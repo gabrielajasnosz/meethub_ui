@@ -9,9 +9,7 @@ export const HomePage = () => {
   return (
     <>
       <Navbar />
-      {isLoggedIn && (
-          <Meetings />
-      )}
+      {isLoggedIn && <Meetings />}
       <Footer />
     </>
   );

@@ -9,7 +9,7 @@ import {
 import { format, parseISO } from "date-fns";
 import enGB from "date-fns/locale/en-GB";
 import { MeetingEntry } from "../../../services/MeetingService";
-import "./MeetingList.scss"
+import "./MeetingList.scss";
 
 interface MeetingListProps {
   meetings: MeetingEntry[];
@@ -26,10 +26,27 @@ export const MeetingList = (meetingListProp: MeetingListProps) => {
     .slice(0, 4);
 
   return (
-    <div className={'meeting-list'}>
-      {filteredMeetings.map((element: MeetingEntry) => {
-        return (
-            <Card sx={{ minWidth: 275, boxShadow: "0 3px 6px #00000029", padding: '10px' }}>
+    <div className={"meeting-list"}>
+      {filteredMeetings.length === 0 && (
+        <Typography
+          sx={{ fontSize: 16 }}
+          color="text.secondary"
+          gutterBottom
+          align="center"
+        >
+          No meetings yet
+        </Typography>
+      )}
+      {filteredMeetings.length > 0 &&
+        filteredMeetings.map((element: MeetingEntry) => {
+          return (
+            <Card
+              sx={{
+                minWidth: 275,
+                boxShadow: "0 3px 6px #00000029",
+                padding: "10px",
+              }}
+            >
               <CardContent>
                 <Typography
                   sx={{ fontSize: 20, fontWeight: "bold", color: "#1976D2" }}
@@ -76,8 +93,8 @@ export const MeetingList = (meetingListProp: MeetingListProps) => {
                 </Button>
               </CardActions>
             </Card>
-        );
-      })}
+          );
+        })}
     </div>
   );
 };

@@ -1,13 +1,6 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Menu,
-  MenuItem,
-  Toolbar,
-} from "@mui/material";
+import { AppBar, Box, Button, Menu, MenuItem, Toolbar } from "@mui/material";
 import React, { useState } from "react";
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import "./Navbar.scss";
 
 export const Navbar = () => {
@@ -26,7 +19,7 @@ export const Navbar = () => {
         sx={{ boxShadow: "0px 2px 5px #1976d2" }}
       >
         <Toolbar>
-            <div className={'logo'} />
+          <div className={"logo"} />
           <Box sx={{ flexGrow: 8 }} />
           <Box
             sx={{
@@ -35,11 +28,11 @@ export const Navbar = () => {
               justifyContent: "space-evenly",
             }}
           >
-            <Button variant="outlined" href={"/"} sx={{ width: '200px'}}>
+            <Button variant="outlined" href={"/"} sx={{ width: "200px" }}>
               Meetings
             </Button>
             <Button
-              sx={{ width: '200px'}}
+              sx={{ width: "200px" }}
               variant="outlined"
               href={"/friends"}
             >
@@ -47,15 +40,15 @@ export const Navbar = () => {
             </Button>
             <Button
               variant="outlined"
-              sx={{ width: '200px'}}
+              sx={{ width: "200px" }}
               onClick={(e) => {
                 setAnchorEl(e.currentTarget);
                 setMenuOpened(true);
               }}
             >
-              <div className={'button-with-icon'}>
+              <div className={"button-with-icon"}>
                 Account
-                <KeyboardArrowDownIcon sx={{ marginLeft: '10px'}} />
+                <KeyboardArrowDownIcon sx={{ marginLeft: "10px" }} />
               </div>
             </Button>
           </Box>
