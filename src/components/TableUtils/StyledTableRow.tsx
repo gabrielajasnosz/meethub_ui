@@ -1,4 +1,3 @@
-import React from "react";
 import { styled, TableRow } from "@mui/material";
 
 export const StyledTableRow = styled(TableRow)(({ theme }) => ({

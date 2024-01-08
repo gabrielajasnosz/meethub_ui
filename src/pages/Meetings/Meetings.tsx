@@ -14,8 +14,6 @@ export const Meetings = () => {
   const [forceRerender, setForceRerender] = useState<boolean>(false);
   const { getUserName } = useStorage();
 
-  console.log(getUserName());
-
   const handleOpenDialog = () => {
     setCreateMeetingDialogOpen(true);
   };
@@ -41,10 +39,15 @@ export const Meetings = () => {
   const pastDates = (date: string) => new Date(date) < new Date();
 
   return (
-    <div className={'meetings'}>
-      <Typography variant={'h4'} sx={{ fontWeight: 'bold', padding: '0 140px', color: '#4A6072'}}>Hello {getUserName()}!</Typography>
-        <div className={'meetings__section'}>
-          <div className={'meetings__row'}>
+    <div className={"meetings"}>
+      <Typography
+        variant={"h4"}
+        sx={{ fontWeight: "bold", padding: "0 140px", color: "#4A6072" }}
+      >
+        Hello {getUserName()}!
+      </Typography>
+      <div className={"meetings__section"}>
+        <div className={"meetings__row"}>
           <Typography
             sx={{
               fontSize: 30,
@@ -57,17 +60,21 @@ export const Meetings = () => {
           >
             Upcoming meetings &nbsp;&nbsp;&nbsp;
           </Typography>
-          <ButtonWithIcon label={"New meeting"} onClick={handleOpenDialog} backgroundColor={"#f9f9f9"} />
-          </div>
-          <MeetingList
-            meetings={meetings}
-            dateComparison={futureAndCurrentDates}
-            sortFunction={(a, b) =>
-              new Date(a.date).getTime() - new Date(b.date).getTime()
-            }
+          <ButtonWithIcon
+            label={"New meeting"}
+            onClick={handleOpenDialog}
+            backgroundColor={"#f9f9f9"}
           />
         </div>
-      <div className={'meetings__section'}>
+        <MeetingList
+          meetings={meetings}
+          dateComparison={futureAndCurrentDates}
+          sortFunction={(a, b) =>
+            new Date(a.date).getTime() - new Date(b.date).getTime()
+          }
+        />
+      </div>
+      <div className={"meetings__section"}>
         <Typography
           sx={{
             fontSize: 30,
@@ -75,7 +82,7 @@ export const Meetings = () => {
             color: "#1976D2",
             textDecoration: "underline",
             textUnderlineOffset: "10px",
-            marginBottom: "50px"
+            marginBottom: "50px",
           }}
           align="left"
         >
@@ -92,6 +99,7 @@ export const Meetings = () => {
       <NewMeetingDialog
         open={isCreateMeetingDialogOpen}
         onClose={handleCloseDialog}
+        onSubmit={setForceRerender}
       />
     </div>
   );

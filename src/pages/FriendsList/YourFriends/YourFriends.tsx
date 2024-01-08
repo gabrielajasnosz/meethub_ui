@@ -39,35 +39,51 @@ export const YourFriends = ({ friendsList }: YourFriendsProps) => {
           closeModal={() => setModalOpened(false)}
         />
       </div>
-      <TableContainer>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              {["First name", "Last name", "Email", "Delete"].map(
-                (header: string) => (
-                  <StyledTableCell align="center" width={'25%'}>{header}</StyledTableCell>
-                ),
-              )}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {friendsList.map((row) => (
-              <StyledTableRow key={row.id}>
-                <StyledTableCell align="center" width={'25%'}>
-                  {row.firstName}
-                </StyledTableCell>
-                <StyledTableCell align="center" width={'25%'}>{row.lastName}</StyledTableCell>
-                <StyledTableCell align="center" width={'25%'}>{row.email}</StyledTableCell>
-                <StyledTableCell align="center" width={'25%'}>
-                  <IconButton aria-label="delete">
-                    <DeleteIcon sx={{ color: "#1976D2" }} />
-                  </IconButton>
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      {friendsList.length === 0 ? (
+        <div
+          style={{ display: "flex", width: "100%", justifyContent: "center" }}
+        >
+          <Typography variant={"subtitle1"} sx={{ fontStyle: "italic" }}>
+            No friends yet
+          </Typography>
+        </div>
+      ) : (
+        <TableContainer>
+          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                {["First name", "Last name", "Email", "Delete"].map(
+                  (header: string) => (
+                    <StyledTableCell align="center" width={"25%"}>
+                      {header}
+                    </StyledTableCell>
+                  ),
+                )}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {friendsList.map((row) => (
+                <StyledTableRow key={row.id}>
+                  <StyledTableCell align="center" width={"25%"}>
+                    {row.firstName}
+                  </StyledTableCell>
+                  <StyledTableCell align="center" width={"25%"}>
+                    {row.lastName}
+                  </StyledTableCell>
+                  <StyledTableCell align="center" width={"25%"}>
+                    {row.email}
+                  </StyledTableCell>
+                  <StyledTableCell align="center" width={"25%"}>
+                    <IconButton aria-label="delete">
+                      <DeleteIcon sx={{ color: "#1976D2" }} />
+                    </IconButton>
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </div>
   );
 };

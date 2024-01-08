@@ -42,65 +42,77 @@ export const Invites = ({ invitations }: InvitesProps) => {
       >
         Invites
       </Typography>
-      <TableContainer>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              {["First name", "Last name", "Email", "Accept/Delete"].map(
-                (header: string) => (
-                  <StyledTableCell align="center" width={'25%'}>{header}</StyledTableCell>
-                ),
-              )}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {invitations.map((row) => (
-              <StyledTableRow key={row.id}>
-                <StyledTableCell align="center" width={'25%'}>
-                  {row.inviterUser.firstName}
-                </StyledTableCell>
-                <StyledTableCell align="center" width={'25%'}>
-                  {row.inviterUser.lastName}
-                </StyledTableCell>
-                <StyledTableCell align="center" width={'25%'}>
-                  {row.inviterUser.email}
-                </StyledTableCell>
-                <StyledTableCell align="center" width={'25%'}>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "center",
-                      gap: "23px",
-                    }}
-                  >
-                    <Button
-                      onClick={() => {
-                        acceptInvitation(row.id);
+      {invitations.length === 0 ? (
+        <div
+          style={{ display: "flex", width: "100%", justifyContent: "center" }}
+        >
+          <Typography variant={"subtitle1"} sx={{ fontStyle: "italic" }}>
+            No invites yet
+          </Typography>
+        </div>
+      ) : (
+        <TableContainer>
+          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+            <TableHead>
+              <TableRow>
+                {["First name", "Last name", "Email", "Accept/Delete"].map(
+                  (header: string) => (
+                    <StyledTableCell align="center" width={"25%"}>
+                      {header}
+                    </StyledTableCell>
+                  ),
+                )}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {invitations.map((row) => (
+                <StyledTableRow key={row.id}>
+                  <StyledTableCell align="center" width={"25%"}>
+                    {row.inviterUser.firstName}
+                  </StyledTableCell>
+                  <StyledTableCell align="center" width={"25%"}>
+                    {row.inviterUser.lastName}
+                  </StyledTableCell>
+                  <StyledTableCell align="center" width={"25%"}>
+                    {row.inviterUser.email}
+                  </StyledTableCell>
+                  <StyledTableCell align="center" width={"25%"}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        gap: "23px",
                       }}
-                      color="success"
-                      variant={"outlined"}
-                      sx={{ fontWeight: "bold", height: "42px" }}
                     >
-                      Accept
-                    </Button>
-                    <Button
-                      onClick={() => {
-                        rejectInvitation(row.id);
-                      }}
-                      color="error"
-                      variant={"outlined"}
-                      sx={{ fontWeight: "bold", height: "42px" }}
-                    >
-                      Reject
-                    </Button>
-                  </div>
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+                      <Button
+                        onClick={() => {
+                          acceptInvitation(row.id);
+                        }}
+                        color="success"
+                        variant={"outlined"}
+                        sx={{ fontWeight: "bold", height: "42px" }}
+                      >
+                        Accept
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          rejectInvitation(row.id);
+                        }}
+                        color="error"
+                        variant={"outlined"}
+                        sx={{ fontWeight: "bold", height: "42px" }}
+                      >
+                        Reject
+                      </Button>
+                    </div>
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </div>
   );
 };

@@ -6,16 +6,15 @@
   flex-direction: column;
   gap: 78px;
 
-
   &__header {
     display: flex;
     flex-direction: column;
-    gap: 10px
+    gap: 10px;
   }
 
   &__members_and_settlements {
     display: flex;
     flex-direction: row;
-    gap: 60px
+    gap: 60px;
   }
 }
