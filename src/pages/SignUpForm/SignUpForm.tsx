@@ -5,16 +5,30 @@ import Button from "@mui/material/Button";
 import "./SignUpForm.scss";
 import { ArrowBack } from "@mui/icons-material";
 import { signUp, SignUpFormType } from "../../services/UserService";
-import { Alert, Snackbar } from "@mui/material";
+import { Toast, ToastValues } from "../../components/Toast/Toast";
 
 export const SignUpForm = () => {
   const [formData, setFormData] = useState<SignUpFormType>({});
-  const [toastOpened, setToastOpened] = useState<boolean>(false);
+  const [toast, setToast] = useState<ToastValues>({
+    toastOpened: false,
+  });
 
   const handleSubmit = () => {
-    signUp(formData).then(() => {
-      setToastOpened(true);
-    });
+    signUp(formData)
+      .then((r) => {
+        setToast({
+          toastOpened: true,
+          severity: "success",
+          message: "Sign up completed! You can now sign in to your account.",
+        });
+      })
+      .catch((e) => {
+        setToast({
+          toastOpened: true,
+          severity: "error",
+          message: "There has been an error. Please check the form.",
+        });
+      });
   };
 
   return (
@@ -72,19 +86,18 @@ export const SignUpForm = () => {
       <Button
         variant="contained"
         sx={{ height: "50px" }}
+        disabled={Object.keys(formData).length < 5}
         onClick={() => handleSubmit()}
         fullWidth
       >
         Sign up
       </Button>
-      <Snackbar
-        anchorOrigin={{ vertical: "top",horizontal: "center" }}
-        open={toastOpened}
-        autoHideDuration={6000}
-        onClose={() => {setToastOpened(false)}}
-      >
-        <Alert severity="success">Sign up completed! You can now sign in to your account. </Alert>
-      </Snackbar>
+      <Toast
+        toastOpened={toast.toastOpened}
+        setToastOpened={(value) => setToast({ ...toast, toastOpened: value })}
+        severity={toast.severity}
+        message={toast.message}
+      />
     </form>
   );
 };

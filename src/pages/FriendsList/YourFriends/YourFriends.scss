@@ -1,0 +1,8 @@
+.your-friends-container {
+  &__header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+}

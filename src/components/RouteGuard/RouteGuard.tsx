@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useStorage } from "../../hooks/useStorage";
 
 type RouteGuardProps = {
   children: ReactElement;
@@ -7,13 +8,12 @@ type RouteGuardProps = {
 
 export const RouteGuard = ({ children }: RouteGuardProps) => {
   const navigate = useNavigate();
+  const { isLoggedIn } = useStorage();
   useEffect(() => {
-    if (!hasJWT()) {
+    if (!isLoggedIn) {
       navigate("/sign-in");
     }
-  });
-
-  const hasJWT = () => !!localStorage.getItem("token");
+  }, [isLoggedIn]);
 
   return <>{children}</>;
 };
