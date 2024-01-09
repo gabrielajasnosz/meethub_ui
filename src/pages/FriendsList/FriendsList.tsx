@@ -6,16 +6,19 @@ import { YourFriends } from "./YourFriends/YourFriends";
 import { Invites } from "./Invites/Invites";
 import { Footer } from "../../components/Footer/Footer";
 import { getInvitations } from "../../services/FriendInvitationService";
-import { User } from "./types";
+import { Invite, User } from "./types";
 
 export const FriendsList = () => {
   const [friendsList, setFriendsList] = useState<User[]>([]);
-  const [invitations, setInvitations] = useState([]);
+  const [invitations, setInvitations] = useState<Invite[]>([]);
+
+  const getData = () => {
+    getFriendsList().then((r) => setFriendsList(r));
+    getInvitations().then((r) => setInvitations(r));
+  }
 
   useEffect(() => {
-    getFriendsList().then((r) => setFriendsList(r));
-
-    getInvitations().then((r) => setInvitations(r));
+      getData();
   }, []);
 
   return (
@@ -23,7 +26,7 @@ export const FriendsList = () => {
       <Navbar />
       <div className={"friends-container"}>
         <YourFriends friendsList={friendsList} />
-        <Invites invitations={invitations} />
+        <Invites invitations={invitations} reload={getData} />
       </div>
       <Footer />
     </>
