@@ -15,9 +15,13 @@ export const MeetingDetails = () => {
   const { meetingId } = useParams();
   const [details, setDetails] = useState<MeetingDetailsType | null>(null);
 
+  const getData = () => {
+    getMeetingDetails(meetingId!).then((details) => setDetails(details));
+  }
+
   useEffect(() => {
     if (meetingId) {
-      getMeetingDetails(meetingId!).then((details) => setDetails(details));
+      getData();
     }
   }, [meetingId]);
 
@@ -38,7 +42,7 @@ export const MeetingDetails = () => {
         </div>
         <Receipts />
         <div className={"meeting-details__members_and_settlements"}>
-          <Members />
+          <Members reloadData={getData} members={details?.members.filter((user) => !user.isOwner) || []} />
           <Settlements />
         </div>
       </div>

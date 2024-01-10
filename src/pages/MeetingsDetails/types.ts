@@ -4,6 +4,10 @@ export type MeetingDetailsType = {
   address: string;
   date: string;
   id: string;
-  members: User[];
+  members: Member[];
   title: string;
 };
+
+export type Member = User & {
+  isOwner : boolean
+}

@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography } from "@mui/material";
 import "./Members.scss";
 import { ButtonWithIcon } from "../../../components/ButtonWithIcon/ButtonWithIcon";
+import { AddMemberModal } from "../AddMemberModal/AddMemberModal";
+import { Member } from "../types";
+import { MembersTable } from "./MembersTable/MembersTable";
 
-export const Members = () => {
+type MembersProps = {
+  reloadData: () => void,
+  members: Member[]
+}
+
+export const Members = ({ reloadData, members } : MembersProps) => {
+  const [memberModalOpened, setMemberModalOpened] = useState<boolean>(false);
   return (
     <div className={"members"}>
       <div className={"members__header"}>
@@ -15,10 +24,12 @@ export const Members = () => {
         </Typography>
         <ButtonWithIcon
           label={"Add member"}
-          onClick={() => {}}
+          onClick={() => {setMemberModalOpened(true)}}
           width={"200px"}
         />
       </div>
+      <MembersTable members={members} />
+      <AddMemberModal isOpened={memberModalOpened} closeModal={() => setMemberModalOpened(false)} reloadDetails={reloadData} />
     </div>
   );
 };

@@ -16,14 +16,15 @@ import { StyledTableRow } from "../../../components/TableUtils/StyledTableRow";
 
 export type InvitesProps = {
   invitations: Invite[];
+  reload: () => void;
 };
 
-export const Invites = ({ invitations }: InvitesProps) => {
+export const Invites = ({ invitations, reload }: InvitesProps) => {
   const acceptInvitation = (invitationId: string) => {
     answerFriendRequest(invitationId, {
       invitationAnswer: INVITATION_STATUS.ACCEPTED,
     }).then(() => {
-      console.log("dupa");
+      reload();
     });
   };
 
