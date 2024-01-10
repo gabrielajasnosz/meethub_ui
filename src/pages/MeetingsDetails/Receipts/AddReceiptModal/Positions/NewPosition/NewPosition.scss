@@ -1,0 +1,11 @@
+.new-positions {
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 20px 0;
+    justify-content: flex-end;
+
+  }
+}

@@ -1,4 +1,4 @@
-import { INVITATION_STATUS, JWT_PREFIX, SERVICE_URL } from "../utils/helpers";
+import { JWT_PREFIX, SERVICE_URL } from "../utils/helpers";
 
 export type MembershipRequest = {
   meetingId: string,

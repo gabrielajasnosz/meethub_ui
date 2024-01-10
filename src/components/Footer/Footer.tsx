@@ -1,5 +1,4 @@
 import { Typography } from "@mui/material";
-import Box from "@mui/system/Box";
 import "./Footer.scss";
 
 export const Footer = () => (

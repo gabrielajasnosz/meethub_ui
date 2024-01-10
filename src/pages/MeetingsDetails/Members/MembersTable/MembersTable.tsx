@@ -1,10 +1,9 @@
 import React from 'react';
-import { Button, IconButton, Table, TableBody, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
+import { IconButton, Table, TableBody, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import { StyledTableCell } from "../../../../components/TableUtils/StyledTableCell";
 import { StyledTableRow } from "../../../../components/TableUtils/StyledTableRow";
 import { Member } from "../../types";
 import DeleteIcon from '@mui/icons-material/Delete';
-import CloseIcon from "@mui/icons-material/Close";
 
 type MembersTableProps = {
   members: Member[]
