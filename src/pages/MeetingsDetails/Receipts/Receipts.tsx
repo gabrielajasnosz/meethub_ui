@@ -3,14 +3,16 @@ import { Typography } from "@mui/material";
 import "./Receipts.scss";
 import { ButtonWithIcon } from "../../../components/ButtonWithIcon/ButtonWithIcon";
 import { AddReceiptModal } from "./AddReceiptModal/AddReceiptModal";
-import { Member } from "../types";
+import { GeneralReceiptInfo, Member } from "../types";
+import { ReceiptCard } from "./ReceiptCard/ReceiptCard";
 
 export type ReceiptsProps = {
-  meetingMembers: Member[]
+  meetingMembers: Member[],
+  receipts: GeneralReceiptInfo[],
+  reloadData: () => void
 }
 
-export const Receipts = ({ meetingMembers }: ReceiptsProps) => {
-
+export const Receipts = ({ meetingMembers, receipts, reloadData }: ReceiptsProps) => {
   const [receiptModalOpened, setReceiptModalOpened] = useState<boolean>(false);
 
   return (
@@ -25,10 +27,18 @@ export const Receipts = ({ meetingMembers }: ReceiptsProps) => {
           width={"200px"}
         />
       </div>
+      <div className={'receipts__list'}>
+        { receipts && receipts.map((receipt) =>
+          <ReceiptCard receipt={receipt} />
+        )}
+      </div>
       <AddReceiptModal
         meetingMembers={meetingMembers}
         isOpened={receiptModalOpened}
-        closeModal={() => {setReceiptModalOpened(false)}}
+        closeModal={() => {
+          reloadData();
+          setReceiptModalOpened(false)
+        }}
       />
     </div>
   );
