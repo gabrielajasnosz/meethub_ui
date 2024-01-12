@@ -3,8 +3,14 @@ import { Typography } from "@mui/material";
 import "./Receipts.scss";
 import { ButtonWithIcon } from "../../../components/ButtonWithIcon/ButtonWithIcon";
 import { AddReceiptModal } from "./AddReceiptModal/AddReceiptModal";
+import { Member } from "../types";
 
-export const Receipts = () => {
+export type ReceiptsProps = {
+  meetingMembers: Member[]
+}
+
+export const Receipts = ({ meetingMembers }: ReceiptsProps) => {
+
   const [receiptModalOpened, setReceiptModalOpened] = useState<boolean>(false);
 
   return (
@@ -19,7 +25,11 @@ export const Receipts = () => {
           width={"200px"}
         />
       </div>
-      <AddReceiptModal isOpened={receiptModalOpened} closeModal={() => {setReceiptModalOpened(false)}} />
+      <AddReceiptModal
+        meetingMembers={meetingMembers}
+        isOpened={receiptModalOpened}
+        closeModal={() => {setReceiptModalOpened(false)}}
+      />
     </div>
   );
 };

@@ -3,10 +3,8 @@ import {
   Button,
   Dialog,
   DialogContent,
-  FormControl,
   IconButton,
   MenuItem,
-  Select,
   TextField,
   Typography
 } from "@mui/material";
@@ -55,7 +53,7 @@ export const AddMemberModal = ({ isOpened, closeModal, reloadDetails } : AddMemb
       >
         <CloseIcon />
       </IconButton>
-      <DialogContent className={"add-friend-modal"}>
+      <DialogContent className={"meethub-modal"}>
         <Typography variant="h4" sx={{ fontWeight: "bold", color: "#4A6072" }}>
           Add member
         </Typography>
@@ -72,7 +70,7 @@ export const AddMemberModal = ({ isOpened, closeModal, reloadDetails } : AddMemb
             <MenuItem value={friend.id}>{friend.firstName} {friend.lastName} ({friend.email})</MenuItem>
           )}
         </TextField>
-        <div className={"add-friend-modal__buttons"}>
+        <div className={"meethub-modal__buttons"}>
           <Button onClick={closeModal} color="primary" fullWidth>
             Close
           </Button>

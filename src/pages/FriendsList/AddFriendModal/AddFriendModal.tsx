@@ -8,7 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import "./AddFriendModal.scss";
 import {
   inviteFriend,
   InviteFriendRequest,
@@ -67,7 +66,7 @@ export const AddFriendModal = ({
       >
         <CloseIcon />
       </IconButton>
-      <DialogContent className={"add-friend-modal"}>
+      <DialogContent className={"meethub-modal"}>
         <Typography variant="h4" sx={{ fontWeight: "bold", color: "#4A6072" }}>
           Add friend
         </Typography>
@@ -82,7 +81,7 @@ export const AddFriendModal = ({
           }}
           sx={{ margin: "20px 0" }}
         />
-        <div className={"add-friend-modal__buttons"}>
+        <div className={"meethub-modal__buttons"}>
           <Button onClick={closeModal} color="primary" fullWidth>
             Close
           </Button>

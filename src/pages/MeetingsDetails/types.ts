@@ -11,3 +11,10 @@ export type MeetingDetailsType = {
 export type Member = User & {
   isOwner : boolean
 }
+
+
+export type Position = {
+  "name": string,
+  "amount": number,
+  "payers": string[]
+}

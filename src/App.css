@@ -44,3 +44,12 @@
   background-image: url("/public/meethub_logo.png");
   background-size: contain;
 }
+
+.meethub-modal {
+  margin: 10px;
+}
+
+.meethub-modal__buttons {
+  display: flex;
+  flex-direction: row;
+}

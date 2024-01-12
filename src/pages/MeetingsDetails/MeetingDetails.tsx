@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMeetingDetails } from "../../services/MeetingService";
 import { MeetingDetailsType } from "./types";
@@ -40,7 +40,7 @@ export const MeetingDetails = () => {
             {moment(details?.date).format("DD MMMM YYYY")}
           </Typography>
         </div>
-        <Receipts />
+        <Receipts meetingMembers={details?.members || []} />
         <div className={"meeting-details__members_and_settlements"}>
           <Members reloadData={getData} members={details?.members.filter((user) => !user.isOwner) || []} />
           <Settlements />
