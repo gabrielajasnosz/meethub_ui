@@ -32,7 +32,6 @@ export const Invites = ({ invitations, reload }: InvitesProps) => {
     answerFriendRequest(invitationId, {
       invitationAnswer: INVITATION_STATUS.DECLINED,
     }).then(() => {
-      console.log("dupa");
     });
   };
   return (

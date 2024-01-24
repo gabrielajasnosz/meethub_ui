@@ -4,6 +4,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import "./AddReceiptModal.scss";
 import { Positions } from "./Positions/Positions";
 import { Member, Position } from "../../types";
+import { addReceipt } from "../../../../services/ReceiptService";
+import { useParams } from "react-router-dom";
 
 export type AddReceiptModalProps = {
   isOpened: boolean,
@@ -13,14 +15,25 @@ export type AddReceiptModalProps = {
 
 
 export const AddReceiptModal = ({ isOpened, closeModal, meetingMembers} : AddReceiptModalProps) => {
+  const { meetingId } = useParams();
+  const [title, setTitle] = useState<string>("");
   const [positions, setPositions] = useState<Position[]>([]);
-  console.log(positions);
+
+  const handleSubmit = () => {
+    addReceipt({ meetingId: meetingId!, positions, title}).then((x) => {
+      closeModal();
+    });
+  }
+
   return (
     <Dialog open={isOpened} onClose={closeModal} maxWidth="sm" fullWidth>
       <IconButton
         edge="end"
         color="inherit"
-        onClick={closeModal}
+        onClick={() => {
+          closeModal();
+          setPositions([]);
+        }}
         aria-label="close"
         size="large"
         sx={{ position: "absolute", right: 20, top: 8 }}
@@ -37,7 +50,7 @@ export const AddReceiptModal = ({ isOpened, closeModal, meetingMembers} : AddRec
             variant="outlined"
             required={true}
             fullWidth
-            onChange={(event) => {}}
+            onChange={(event) => {setTitle(event.target.value)}}
             sx={{ margin: "20px 0" }}
           />
           <Positions setPositions={setPositions} currentPositions={positions} meetingMembers={meetingMembers} />
@@ -47,7 +60,7 @@ export const AddReceiptModal = ({ isOpened, closeModal, meetingMembers} : AddRec
             Close
           </Button>
           <Button
-            onClick={() => {}}
+            onClick={handleSubmit}
             variant="contained"
             color="primary"
             fullWidth
